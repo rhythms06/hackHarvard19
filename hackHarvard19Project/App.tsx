@@ -17,3 +17,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
 });
+         />
+          <Button
+            onPress={() => this.handleClick()}
+            title="Glode!"
+            style={{ width: 300 }}
+            color="#841584"
+            accessibilityLabel="Learn more about this purple button"
+          />
+        </View>
