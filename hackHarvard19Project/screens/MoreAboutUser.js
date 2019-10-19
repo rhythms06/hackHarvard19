@@ -12,23 +12,25 @@ export default class MoreAboutUser extends Component {
 
   render() {
   return (
-    <View
-    style={styles.container}>
-    <View>
-    <Text>Email
-    </Text>
+    <View style={styles.container}>
+
+      <View style={{ width: 300, height: 75, backgroundColor: 'powderblue' }}>
+      <Text>Email</Text>
+
       <TextInput
-        style={{height: 20, borderBottomColor: 'black', borderBottomWidth: 1, width: 300, backgroundColor: 'white'}}
+        style="input"
         onChangeText={(text) => this.setState({input: text})}
       />
-    
-      <Text>Password
-            </Text>
-        <TextInput
-          style={{height: 20, borderBottomColor: 'black', borderBottomWidth: 1, backgroundColor: 'white'}}
-          onChangeText={(text) => this.setState({input: text})}
-        />
-    </View>
+      </View>
+
+      <View style={{ width: 300, height: 75, backgroundColor: 'skyblue' }}>
+      <Text>Password</Text>
+
+      <TextInput
+        style="input"
+        onChangeText={(text) => this.setState({input: text})}
+      />
+      </View>
 
       <Button
         title="Let's jam!"
@@ -39,15 +41,17 @@ export default class MoreAboutUser extends Component {
         title="Go Back"
         onPress={() => navigation.navigate(SCREENS.START)}
       />
+
     </View>
   )
-};
+  };
 };
 
 
 
 const styles = StyleSheet.create({
   container: {
+    flexDirection:'column',
     flex: 1,
     backgroundColor: "#fff",
     alignItems: "center",
@@ -56,5 +60,13 @@ const styles = StyleSheet.create({
   titleText: {
     fontSize: 30,
     fontWeight: "bold"
-  }
+  },
+  input: {
+    borderBottomColor: 'black',
+    borderBottomWidth: 1,
+    backgroundColor: 'white'
+  },
+  // Text + TextInput: {
+  //   margin-top: 10px;
+  // }
 });

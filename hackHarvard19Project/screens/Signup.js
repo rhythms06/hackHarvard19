@@ -26,6 +26,7 @@ function Signup({ navigation }) {
   );
 }
 
+
 Signup.navigationOptions = {
   title: "Signup"
 };
@@ -35,6 +36,7 @@ export default Signup;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    flexDirection:'column',
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#F5FCFF"
@@ -43,7 +45,10 @@ const styles = StyleSheet.create({
     fontSize: 36,
     textAlign: "center",
     margin: 10
-  }
+  },
+  // TextInput + TextInput: {
+  //   margin-top: 10px;
+  // }
 });
 
 // TODO: read these values from a form where the user entered them
