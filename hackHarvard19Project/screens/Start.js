@@ -18,7 +18,10 @@ function Start(props) {
 
   return (
     <View style={styles.container}>
-      <Image style={{ width: 50, height: 50 }} source={require("./logo.png")} />
+      <Image style=
+        {{ width: 200, height: 200 }}
+        source={require("./logo.png")}
+      />
       <Text style={styles.titleText}>BandIt!</Text>
       <Button
         title="Sign In"
