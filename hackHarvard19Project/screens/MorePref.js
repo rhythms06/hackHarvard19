@@ -18,7 +18,7 @@ export default class MorePref extends Component {
        <View style={styles.container}>
 
          <View style={{ width: 300, height: 75, backgroundColor: 'powderblue' }}>
-         <Text>First Name</Text>
+         <Text>First Name: </Text>
 
          <TextInput
            style="input"
@@ -28,12 +28,30 @@ export default class MorePref extends Component {
          <View style={styles.container}>
 
            <View style={{ width: 300, height: 75, backgroundColor: 'powderblue' }}>
-           <Text>Last Name</Text>
+           <Text>Last Name: </Text>
 
            <TextInput
              style="input"
              onChangeText={(text) => this.setState({input: text})}
            />
+
+           </View>
+
+           <View style={{ width: 300, height: 75, backgroundColor: 'skyblue' }}>
+           <Text>Gender: </Text>
+           <MenuProvider style={{ flexDirection: "column", padding: 30 }}>
+             <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
+
+               <MenuTrigger  >
+               <Text style={styles.headerText}>DropDown Menu</Text>
+               </MenuTrigger  >
+
+               <MenuOptions>
+                 <MenuOption value={"Male"}>
+                   <Text style={styles.menuContent}>Acoustic</Text>
+                 </MenuOption>
+                 <MenuOption value={"Female"}>
+                   <Text style={styles.menuContent}>ElectricGuitar</Text>
 
        </View>
 
