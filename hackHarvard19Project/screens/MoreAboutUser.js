@@ -1,16 +1,38 @@
 import firebase from "firebase";
 import { SCREENS } from "../constants";
-import React from "react";
-import { StyleSheet, Text, View, Image, Button } from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, View, Text, TextInput, Image, Button } from "react-native";
 
-function MoreAboutUser({ navigation }) {
+
+export default class MoreAboutUser extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {text: ''};
+  }
+
+  render() {
   return (
     <View
     style={styles.container}>
+    <View>
+    <Text>Email
+    </Text>
+      <TextInput
+        style={{height: 20, borderBottomColor: 'black', borderBottomWidth: 1, width: 300, backgroundColor: 'white'}}
+        onChangeText={(text) => this.setState({input: text})}
+      />
+    
+      <Text>Password
+            </Text>
+        <TextInput
+          style={{height: 20, borderBottomColor: 'black', borderBottomWidth: 1, backgroundColor: 'white'}}
+          onChangeText={(text) => this.setState({input: text})}
+        />
+    </View>
 
       <Button
         title="Let's jam!"
-        // onPress={() => navigation.navigate(SCREENS.HOME)}
+        onPress={() => navigation.navigate(SCREENS.HOME)}
       />
 
       <Button
@@ -20,12 +42,8 @@ function MoreAboutUser({ navigation }) {
     </View>
   )
 };
-
-MoreAboutUser.navigationOptions = {
-  title: "MoreAboutUser"
 };
 
-export default MoreAboutUser;
 
 
 const styles = StyleSheet.create({
