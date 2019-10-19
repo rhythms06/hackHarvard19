@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Image, Button } from "react-native";
-import * as firebase from "firebase";
+import firebase from "firebase";
 import { SCREENS } from "../constants";
 
 var app = firebase.initializeApp({
