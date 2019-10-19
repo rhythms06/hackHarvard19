@@ -3,7 +3,6 @@ import { StyleSheet, View, Text, Button } from "react-native";
 import { SCREENS } from "../constants";
 import firebase from "firebase";
 
-var userName = "";
 var emailAddress = "";
 var password = "";
 
@@ -17,7 +16,7 @@ function Signup({ navigation }) {
       <Text style={styles.textBig}>This is signup page</Text>
       <Button
         title="CREATE ACCOUNT"
-        onPress={() => navigation.navigate(SCREENS.MOREABOUTUSER)}
+        onPress={() => createUser(emailAddress, password)}
       />
       <Button
         title="Go Back to Start"
@@ -49,9 +48,15 @@ const styles = StyleSheet.create({
 
 // TODO: read these values from a form where the user entered them
 
-firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
-  // Handle errors with user creation here.
-  var errorCode = error.code;
-  var errorMessage = error.message;
-  console.log("user creation error " + errorCode + ": " + errorMessage);
-})
+
+function createUser(emailAddress, password) {
+    firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
+      // Handle errors with user creation here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert("Error " + errorCode + ": " + errorMessage);
+    })
+    console.log("Account created");
+
+    // Navigate to the MoreAboutUser page.
+}
