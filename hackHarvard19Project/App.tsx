@@ -1,14 +1,22 @@
 import { createSwitchNavigator, createAppContainer } from "react-navigation";
-import { LoginScreen, UsersScreen, ProfileScreen } from "./screens";
+import {
+  LoginScreen,
+  UsersScreen,
+  ProfileScreen,
+  StartScreen,
+  SignupScreen
+} from "./screens";
 import { SCREENS } from "./constants";
 
 const Navigator = createSwitchNavigator(
   {
     Login: LoginScreen,
     Users: UsersScreen,
-    Profile: ProfileScreen
+    Profile: ProfileScreen,
+    Signup: SignupScreen,
+    Start: StartScreen
   },
-  { initialRouteName: SCREENS.LOGIN }
+  { initialRouteName: SCREENS.START }
 );
 
 export default createAppContainer(Navigator);

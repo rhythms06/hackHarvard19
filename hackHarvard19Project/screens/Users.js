@@ -11,8 +11,12 @@ function Users({ navigation }) {
     >
       <Text style={styles.textBig}>here are all the users</Text>
       <Button
-        title="View Login"
-        onPress={() => navigation.navigate(SCREENS.LOGIN)}
+        title="Go Back to Start"
+        onPress={() => navigation.navigate(SCREENS.START)}
+      />
+      <Button
+        title="Go to your profile"
+        onPress={() => navigation.navigate(SCREENS.PROFILE)}
       />
     </View>
   );

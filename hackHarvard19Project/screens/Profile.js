@@ -11,7 +11,7 @@ function Profile({ navigation }) {
     >
       <Text style={styles.textBig}>This is one single profile</Text>
       <Button
-        title="View Users"
+        title="Go back to Users"
         onPress={() => navigation.navigate(SCREENS.USERS)}
       />
     </View>

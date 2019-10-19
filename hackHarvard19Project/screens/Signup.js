@@ -2,16 +2,16 @@ import React, { useEffect, useState, Component } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { SCREENS } from "../constants";
 
-function Login({ navigation }) {
+function Signup({ navigation }) {
   return (
     <View
       style={{
         backgroundColor: "yellow"
       }}
     >
-      <Text style={styles.textBig}>This is the sign in page</Text>
+      <Text style={styles.textBig}>This is signup page</Text>
       <Button
-        title="Sign in to view musicians"
+        title="Input your info to Signup"
         onPress={() => navigation.navigate(SCREENS.USERS)}
       />
       <Button
@@ -22,11 +22,11 @@ function Login({ navigation }) {
   );
 }
 
-Login.navigationOptions = {
-  title: "Login"
+Signup.navigationOptions = {
+  title: "Signup"
 };
 
-export default Login;
+export default Signup;
 
 const styles = StyleSheet.create({
   container: {
@@ -41,3 +41,13 @@ const styles = StyleSheet.create({
     margin: 10
   }
 });
+
+firebase
+  .auth()
+  .createUserWithEmailAndPassword(emailAddress, password)
+  .catch(function(error) {
+    // Handle errors with user creation here.
+    var errorCode = error.code;
+    var errorMessage = error.message;
+    console.log("user creation error " + errorCode + ": " + errorMessage);
+  });
