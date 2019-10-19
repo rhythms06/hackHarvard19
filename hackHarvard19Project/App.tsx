@@ -17,7 +17,7 @@ export default function App() {
   return (
     <View style={styles.container}>
       <Image
-        style={{ width: 50, height: 50 }}
+        style={{ width: 200, height: 200 }}
         source={require('./logo.png')}
       />
       <Text style={styles.titleText}>BandIt!</Text>
@@ -30,6 +30,20 @@ export default function App() {
     </View>
   );
 }
+
+var userName = "test";
+var emailAddress = "test@gmail.com"
+var password = "test12";
+
+// TODO: read these values from a form where the user entered them
+
+firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
+  // Handle errors with user creation here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log("user creation error " + errorCode + ": " + errorMessage);
+})
+
 
 const styles = StyleSheet.create({
   container: {
