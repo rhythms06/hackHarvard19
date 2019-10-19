@@ -20,3 +20,5 @@ const Navigator = createSwitchNavigator(
 );
 
 export default createAppContainer(Navigator);
+
+// export const auth = firebase.auth(app);

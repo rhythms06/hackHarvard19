@@ -41,13 +41,3 @@ const styles = StyleSheet.create({
     margin: 10
   }
 });
-
-firebase
-  .auth()
-  .createUserWithEmailAndPassword(emailAddress, password)
-  .catch(function(error) {
-    // Handle errors with user creation here.
-    var errorCode = error.code;
-    var errorMessage = error.message;
-    console.log("user creation error " + errorCode + ": " + errorMessage);
-  });
