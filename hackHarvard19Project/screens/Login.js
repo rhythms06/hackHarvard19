@@ -6,7 +6,7 @@ function Login({ navigation }) {
   return (
     <View
       style={{
-        backgroundColor: "yellow"
+        backgroundColor: "black"
       }}
     >
       <Text style={styles.textBig}>This is the sign in page</Text>
