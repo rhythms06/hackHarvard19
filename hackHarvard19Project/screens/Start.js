@@ -24,8 +24,7 @@ function Start(props) {
       />
       <Text style={styles.titleText}>BandIt!</Text>
       <Button
-        title="Sign In"
-        color="#841584"
+        title="Log In"
         onPress={() => navigation.navigate(SCREENS.LOGIN)}
       />
       <Button

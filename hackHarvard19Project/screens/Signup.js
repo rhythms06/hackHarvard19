@@ -1,6 +1,11 @@
 import React, { useEffect, useState, Component } from "react";
 import { StyleSheet, View, Text, Button } from "react-native";
 import { SCREENS } from "../constants";
+import firebase from "firebase";
+
+var userName = "";
+var emailAddress = "";
+var password = "";
 
 function Signup({ navigation }) {
   return (
@@ -41,3 +46,12 @@ const styles = StyleSheet.create({
     margin: 10
   }
 });
+
+// TODO: read these values from a form where the user entered them
+
+firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
+  // Handle errors with user creation here.
+  var errorCode = error.code;
+  var errorMessage = error.message;
+  console.log("user creation error " + errorCode + ": " + errorMessage);
+})
