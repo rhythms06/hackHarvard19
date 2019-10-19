@@ -53,6 +53,8 @@ export default class MorePref extends Component {
                  <MenuOption value={"Female"}>
                    <Text style={styles.menuContent}>ElectricGuitar</Text>
 
+
+
        </View>
 
        <View style={{ width: 300, height: 75, backgroundColor: 'skyblue' }}>
@@ -90,6 +92,48 @@ export default class MorePref extends Component {
 
          </Menu>
        </MenuProvider>
+
+       </View>
+
+       <View style={{ width: 300, height: 75, backgroundColor: 'skyblue' }}>
+       <Text>Who are you looking to jam with?</Text>
+       <MenuProvider style={{ flexDirection: "column", padding: 30 }}>
+         <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
+
+           <MenuTrigger  >
+           <Text style={styles.headerText}>DropDown Menu</Text>
+           </MenuTrigger  >
+
+           <MenuOptions>
+             <MenuOption value={"Acoustic Guitarist"}>
+               <Text style={styles.menuContent}>Acoustic</Text>
+             </MenuOption>
+             <MenuOption value={"Electric Guitarist"}>
+               <Text style={styles.menuContent}>ElectricGuitar</Text>
+             </MenuOption>
+             <MenuOption value={"Singer"}>
+               <Text style={styles.menuContent}>Singer</Text>
+             </MenuOption>
+             <MenuOption value={"Drummer"}>
+               <Text style={styles.menuContent}>Drums</Text>
+             </MenuOption>
+             <MenuOption value={"Keyboard"}>
+               <Text style={styles.menuContent}>Keyboard</Text>
+             </MenuOption>
+             <MenuOption value={"Bassist"}>
+               <Text style={styles.menuContent}>Bass</Text>
+             </MenuOption>
+             <MenuOption value={"Anyone!"}>
+               <Text style={styles.menuContent}>Bass</Text>
+             </MenuOption>
+             <MenuOption value={3} disabled={true}>
+               <Text style={styles.menuContent}>Disabled Menu</Text>
+             </MenuOption>
+           </MenuOptions>
+
+         </Menu>
+       </MenuProvider>
+
      );
    }
  }
