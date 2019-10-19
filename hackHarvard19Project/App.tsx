@@ -3,6 +3,7 @@ import {
   LoginScreen,
   UsersScreen,
   ProfileScreen,
+  MoreAboutUserScreen,
   StartScreen,
   SignupScreen
 } from "./screens";
@@ -13,6 +14,7 @@ const Navigator = createSwitchNavigator(
     Login: LoginScreen,
     Users: UsersScreen,
     Profile: ProfileScreen,
+    MoreAboutUser: MoreAboutUserScreen,
     Signup: SignupScreen,
     Start: StartScreen
   },

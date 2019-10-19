@@ -16,8 +16,8 @@ function Signup({ navigation }) {
     >
       <Text style={styles.textBig}>This is signup page</Text>
       <Button
-        title="Input your info to Signup"
-        onPress={() => navigation.navigate(SCREENS.USERS)}
+        title="CREATE ACCOUNT"
+        onPress={() => navigation.navigate(SCREENS.MOREABOUTUSER)}
       />
       <Button
         title="Go Back to Start"
