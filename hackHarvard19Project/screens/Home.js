@@ -23,9 +23,10 @@ export default class Home extends Component {
         <Text>Franz (Sax)</Text>
       </View>
       <View style={styles.match}>
-        <Text>Liz (Triangle)</Text>
-        <Text>Lorraine (Tuba)</Text>
-        <Text>Casey (Harmonica)</Text>
+        <Button
+          title="Go Back to Start"
+          onPress={() => this.props.navigation.navigate(SCREENS.START)}
+        />
       </View>
      </View>
    );
