@@ -24,10 +24,6 @@ function Start(props) {
       />
       <Text style={styles.titleText}>BandIt!</Text>
       <Button
-        title="Log In"
-        onPress={() => navigation.navigate(SCREENS.LOGIN)}
-      />
-      <Button
         title="Sign Up"
         onPress={() => navigation.navigate(SCREENS.SIGNUP)}
       />
