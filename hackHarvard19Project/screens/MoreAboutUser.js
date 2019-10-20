@@ -8,7 +8,8 @@ import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-n
 export default class MoreAboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: '', user: '', firstName: '', lastName: '', genderOfUser: '',
+    userInstrument: '', userInsSeeking: ''};
   }
 
   render() {
@@ -20,7 +21,7 @@ export default class MoreAboutUser extends Component {
          <Text style={{fontSize: 21}}>First Name</Text>
          <TextInput
            style={styles.input}
-           onChangeText={(text) => this.setState({input: text})}
+           onChangeText = {(text) => this.firstName = text}
          />
        </View>
 
@@ -28,13 +29,13 @@ export default class MoreAboutUser extends Component {
         <Text style={{fontSize: 21}}>Last Name</Text>
         <TextInput
          style={styles.input}
-         onChangeText={(text) => this.setState({input: text})}
+         onChangeText = {(text) => this.lastName = text}
         />
        </View>
 
        <View style={{ width: 300, height: 75 }}>
          <Text style={{fontSize: 21}}>Gender</Text>
-         <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
+         <Menu onSelect={(text) => this.genderOfUser = text}>
          <MenuTrigger>
            <Text style={{fontSize: 21}}>Please pick one</Text>
          </MenuTrigger>
@@ -51,7 +52,7 @@ export default class MoreAboutUser extends Component {
 
        <View style={{ width: 300, height: 75 }}>
        <Text style={{fontSize: 21}}>What instrument are you jamming with?</Text>
-            <Menu onSelect={value => (this.text = value)}>
+            <Menu onSelect={(text) => this.userInstrument = text}>
 
               <MenuTrigger  >
               <Text style={{fontSize: 21}}>Please pick one</Text>
@@ -82,7 +83,7 @@ export default class MoreAboutUser extends Component {
 
        <View style={{ width: 300, height: 75 }}>
        <Text style={{fontSize: 21}}>Who are you looking to jam with?</Text>
-         <Menu onSelect={value => this.setState({input: value})}>
+         <Menu onSelect={(text) => this.userInsSeeking = text}>
 
            <MenuTrigger  >
            <Text style={{fontSize: 21}}>Please pick one</Text>
