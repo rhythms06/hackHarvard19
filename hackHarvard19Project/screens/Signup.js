@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
 
 // TODO: read these values from a form where the user entered them
 
-skip = 1;
+skip = 0;
 
 function createUser(emailAddress, password, navigation) {
   if(skip == 0)
