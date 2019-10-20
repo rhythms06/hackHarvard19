@@ -71,8 +71,11 @@ const styles = StyleSheet.create({
 
 // TODO: read these values from a form where the user entered them
 
+skip = 1;
 
 function createUser(emailAddress, password, navigation) {
+  if(skip == 0)
+  {
     firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
       // Handle errors with user creation here.
       var errorCode = error.code;
@@ -80,8 +83,7 @@ function createUser(emailAddress, password, navigation) {
       alert("Error " + errorCode + ": " + errorMessage);
       navigation.navigate(SCREENS.SIGNUP);
     })
-    console.log("Account created");
-
+  }
     // Navigate to the MoreAboutUser page.
     navigation.navigate(SCREENS.MOREABOUTUSER);
 }

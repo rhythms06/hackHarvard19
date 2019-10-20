@@ -4,5 +4,6 @@ export const SCREENS = {
   SIGNUP: "Signup",
   MOREABOUTUSER: "MoreAboutUser",
   USERS: "Users",
-  PROFILE: "Profile"
+  PROFILE: "Profile",
+  HOME: "Home"
 };

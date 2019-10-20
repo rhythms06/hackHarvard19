@@ -5,7 +5,8 @@ import {
   ProfileScreen,
   MoreAboutUserScreen,
   StartScreen,
-  SignupScreen
+  SignupScreen,
+  HomeScreen
 } from "./screens";
 import { SCREENS } from "./constants";
 
@@ -16,7 +17,8 @@ const Navigator = createSwitchNavigator(
     Profile: ProfileScreen,
     MoreAboutUser: MoreAboutUserScreen,
     Signup: SignupScreen,
-    Start: StartScreen
+    Start: StartScreen,
+    Home: HomeScreen
   },
   { initialRouteName: SCREENS.START }
 );
