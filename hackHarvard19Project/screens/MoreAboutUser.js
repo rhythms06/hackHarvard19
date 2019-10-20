@@ -120,7 +120,7 @@ export default class MoreAboutUser extends Component {
 
        <Button
         title="Let's Jam!"
-        onPress={() => createUser(emailAddress, password, this.props.navigation)}
+        // onPress={() => }
        />
        <Button
         title="Go Back to Start"
@@ -132,6 +132,14 @@ export default class MoreAboutUser extends Component {
   };
 };
 
+var user = firebase.auth().currentUser;
+var uid;
+if(user != null) {
+  uid = user.uid;
+  console.log("logged in as " + uid);
+} else {
+  console.log("not logged in");
+}
 
 
 const styles = StyleSheet.create({
