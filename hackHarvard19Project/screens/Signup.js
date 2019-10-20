@@ -3,13 +3,10 @@ import { StyleSheet, View, Text, TextInput, Button } from "react-native";
 import { SCREENS } from "../constants";
 import firebase from "firebase";
 
-var emailAddress = "";
-var password = "";
-
 export default class SignUp extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: ''};
+    this.state = {text: "", user: "", pass: ""};
   }
   render() {
     return (
@@ -19,7 +16,7 @@ export default class SignUp extends Component {
 
         <TextInput
           style={styles.input}
-          onChangeText={(text) => this.setState({input: text})}
+          onChangeText={(text) => this.user = text}
         />
         </View>
 
@@ -28,13 +25,19 @@ export default class SignUp extends Component {
 
         <TextInput
           style={styles.input}
-          onChangeText={(text) => this.setState({input: text})}
+          onChangeText={(text) => this.pass = text}
         />
         </View>
 
         <Button
           title="Create Account"
-          onPress={() => createUser(emailAddress, password, this.props.navigation)}
+          onPress={() =>
+            {
+              console.log("email: " +  this.user);
+              console.log("pass: " + this.pass);
+              createUser(this.user + "", this.pass + "", this.props.navigation);
+            }
+          }
         />
         <Button
           title="Go Back to Start"
@@ -70,12 +73,13 @@ const styles = StyleSheet.create({
 
 
 function createUser(emailAddress, password, navigation) {
-    // firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
-    //   // Handle errors with user creation here.
-    //   var errorCode = error.code;
-    //   var errorMessage = error.message;
-    //   alert("Error " + errorCode + ": " + errorMessage);
-    // })
+    firebase.auth().createUserWithEmailAndPassword(emailAddress, password).catch(function(error) {
+      // Handle errors with user creation here.
+      var errorCode = error.code;
+      var errorMessage = error.message;
+      alert("Error " + errorCode + ": " + errorMessage);
+      navigation.navigate(SCREENS.SIGNUP);
+    })
     console.log("Account created");
 
     // Navigate to the MoreAboutUser page.
