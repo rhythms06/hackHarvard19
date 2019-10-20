@@ -1,4 +1,5 @@
 import firebase from "firebase";
+require('firebase/firestore');
 import { SCREENS } from "../constants";
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TextInput, Image, Button } from "react-native";
@@ -8,8 +9,8 @@ import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-n
 export default class MoreAboutUser extends Component {
   constructor(props) {
     super(props);
-    this.state = {text: '', user: '', firstName: '', lastName: '', genderOfUser: '',
-    userInstrument: '', userInsSeeking: ''};
+    this.state = {text: '', firstName: '', lastName: '', genderOfUser: '',
+    userInstrument: '', userIsSeeking: ''};
   }
 
   render() {
@@ -54,9 +55,9 @@ export default class MoreAboutUser extends Component {
        <Text style={{fontSize: 21}}>What instrument are you jamming with?</Text>
             <Menu onSelect={(text) => this.userInstrument = text}>
 
-              <MenuTrigger  >
+              <MenuTrigger>
               <Text style={{fontSize: 21}}>Please pick one</Text>
-              </MenuTrigger  >
+              </MenuTrigger>
 
               <MenuOptions>
                 <MenuOption>
@@ -83,11 +84,11 @@ export default class MoreAboutUser extends Component {
 
        <View style={{ width: 300, height: 75 }}>
        <Text style={{fontSize: 21}}>Who are you looking to jam with?</Text>
-         <Menu onSelect={(text) => this.userInsSeeking = text}>
+         <Menu onSelect={(text) => this.userIsSeeking = text}>
 
-           <MenuTrigger  >
+           <MenuTrigger>
            <Text style={{fontSize: 21}}>Please pick one</Text>
-           </MenuTrigger  >
+           </MenuTrigger>
 
            <MenuOptions>
              <MenuOption value={"Acoustic Guitarist"}>
@@ -115,12 +116,10 @@ export default class MoreAboutUser extends Component {
          </Menu>
          </View>
 
-
-
-
        <Button
         title="Let's Jam!"
-        // onPress={() => }
+        onPress={() => updateUser(this.firstName + "", this.lastName + "", this.genderOfUser
+        + "", this.userInstrument + "", this.userIsSeeking + "", this.props.navigation)}
        />
        <Button
         title="Go Back to Start"
@@ -132,14 +131,37 @@ export default class MoreAboutUser extends Component {
   };
 };
 
-var user = firebase.auth().currentUser;
-var uid;
-if(user != null) {
-  uid = user.uid;
-  console.log("logged in as " + uid);
-} else {
-  console.log("not logged in");
+
+function updateUser(fname, lname, gender, inst, seeking, nav)
+{
+  var user = firebase.auth().currentUser;
+  var uid = "";
+  if(user != null) {
+    uid = user.uid;
+    console.log("logged in as " + uid);
+    db = firebase.firestore();
+    // Add a new document in collection "uid"
+    db.collection(uid).doc("userInfo").set({
+      firstName: fname,
+      lastName: lname,
+      gender: gender,
+      instrument: inst,
+      isSeeking: seeking
+    })
+    .then(function() {
+      console.log("Document successfully written!");
+      nav.navigate(SCREENS.HOME);
+    })
+    .catch(function(error) {
+      alert("Error writing document: " + error);
+      nav.navigate(SCREENS.MOREABOUTUSER);
+    });
+  } else {
+    alert("You are not logged in! Please create an account.");
+    nav.navigate(SCREENS.SIGNUP);
+  }
 }
+
 
 
 const styles = StyleSheet.create({
