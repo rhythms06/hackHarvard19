@@ -2,6 +2,7 @@ import firebase from "firebase";
 import { SCREENS } from "../constants";
 import React, { Component } from "react";
 import { StyleSheet, View, Text, TextInput, Image, Button } from "react-native";
+import { Menu, MenuProvider, MenuOptions, MenuOption, MenuTrigger} from "react-native-popup-menu";
 
 
 export default class MoreAboutUser extends Component {
@@ -11,39 +12,122 @@ export default class MoreAboutUser extends Component {
   }
 
   render() {
-  return (
-    <View style={styles.container}>
+    return (
 
-      <View style={{ width: 300, height: 75, backgroundColor: 'powderblue' }}>
-      <Text>Email</Text>
+      <MenuProvider>
+      <View style={styles.container}>
+       <View style={{ width: 300, height: 75 }}>
+         <Text style={{fontSize: 21}}>First Name</Text>
+         <TextInput
+           style={styles.input}
+           onChangeText={(text) => this.setState({input: text})}
+         />
+       </View>
 
-      <TextInput
-        style="input"
-        onChangeText={(text) => this.setState({input: text})}
-      />
-      </View>
+       <View style={{ width: 300, height: 75 }}>
+        <Text style={{fontSize: 21}}>Last Name</Text>
+        <TextInput
+         style={styles.input}
+         onChangeText={(text) => this.setState({input: text})}
+        />
+       </View>
 
-      <View style={{ width: 300, height: 75, backgroundColor: 'skyblue' }}>
-      <Text>Password</Text>
+       <View style={{ width: 300, height: 75 }}>
+         <Text style={{fontSize: 21}}>Gender</Text>
+         <Menu onSelect={value => alert(`You Clicked : ${value}`)}>
+         <MenuTrigger>
+           <Text style={{fontSize: 21}}>Please pick one</Text>
+         </MenuTrigger>
+         <MenuOptions>
+          <MenuOption value={"Male"}>
+            <Text style={{fontSize: 21}}>Male</Text>
+          </MenuOption>
+          <MenuOption value={"Female"}>
+            <Text style={{fontSize: 21}}>Female</Text>
+          </MenuOption>
+         </MenuOptions>
+         </Menu>
+       </View>
 
-      <TextInput
-        style="input"
-        onChangeText={(text) => this.setState({input: text})}
-      />
-      </View>
+       <View style={{ width: 300, height: 75 }}>
+       <Text style={{fontSize: 21}}>What instrument are you jamming with?</Text>
+            <Menu onSelect={value => (this.text = value)}>
 
-      <Button
-        title="Let's jam!"
-        onPress={() => navigation.navigate(SCREENS.HOME)}
-      />
+              <MenuTrigger  >
+              <Text style={{fontSize: 21}}>Please pick one</Text>
+              </MenuTrigger  >
 
-      <Button
-        title="Go Back"
-        onPress={() => navigation.navigate(SCREENS.START)}
-      />
+              <MenuOptions>
+                <MenuOption>
+                  <Text style={{fontSize: 21}}>Acoustic</Text>
+                </MenuOption>
+                <MenuOption value={"Electric Guitar"}>
+                  <Text style={{fontSize: 21}}>Electric Guitar</Text>
+                </MenuOption>
+                <MenuOption value={"Singer"}>
+                  <Text style={{fontSize: 21}}>Vocals</Text>
+                </MenuOption>
+                <MenuOption value={"Drums"}>
+                  <Text style={{fontSize: 21}}>Drums</Text>
+                </MenuOption>
+                <MenuOption value={"Keyboard"}>
+                  <Text style={{fontSize: 21}}>Keyboards</Text>
+                </MenuOption>
+                <MenuOption value={"Bass"}>
+                  <Text style={{fontSize: 21}}>Bass</Text>
+                </MenuOption>
+              </MenuOptions>
+           </Menu>
+       </View>
 
-    </View>
-  )
+       <View style={{ width: 300, height: 75 }}>
+       <Text style={{fontSize: 21}}>Who are you looking to jam with?</Text>
+         <Menu onSelect={value => this.setState({input: value})}>
+
+           <MenuTrigger  >
+           <Text style={{fontSize: 21}}>Please pick one</Text>
+           </MenuTrigger  >
+
+           <MenuOptions>
+             <MenuOption value={"Acoustic Guitarist"}>
+               <Text style={{fontSize: 21}}>Acoustic</Text>
+             </MenuOption>
+             <MenuOption value={"Electric Guitarist"}>
+               <Text style={{fontSize: 21}}>Electric Guitar</Text>
+             </MenuOption>
+             <MenuOption value={"Singer"}>
+               <Text style={{fontSize: 21}}>Vocals</Text>
+             </MenuOption>
+             <MenuOption value={"Drummer"}>
+               <Text style={{fontSize: 21}}>Drums</Text>
+             </MenuOption>
+             <MenuOption value={"Keyboard"}>
+               <Text style={{fontSize: 21}}>Keyboards</Text>
+             </MenuOption>
+             <MenuOption value={"Bassist"}>
+               <Text style={{fontSize: 21}}>Bass</Text>
+             </MenuOption>
+             <MenuOption value={"Anyone!"}>
+               <Text style={{fontSize: 21}}>Not sure/More than one</Text>
+             </MenuOption>
+           </MenuOptions>
+         </Menu>
+         </View>
+
+
+
+
+       <Button
+        title="Let's Jam!"
+        onPress={() => createUser(emailAddress, password, this.props.navigation)}
+       />
+       <Button
+        title="Go Back to Start"
+        onPress={() => this.props.navigation.navigate(SCREENS.START)}
+       />
+       </View>
+       </MenuProvider>
+    )
   };
 };
 
@@ -62,6 +146,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold"
   },
   input: {
+    fontSize: 21,
     borderBottomColor: 'black',
     borderBottomWidth: 1,
     backgroundColor: 'white'
